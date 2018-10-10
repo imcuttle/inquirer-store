@@ -24,9 +24,7 @@ const Store = require('./Store')
 class FileStore extends Store {
   _read() {
     const { storePath, parse, key, fs } = this.options
-    if (!storePath) {
-      throw new Error('`storePath` is required')
-    }
+
     if (fs.existsSync(storePath)) {
       const obj = parse(fs.readFileSync(storePath).toString())
       this._store = obj
