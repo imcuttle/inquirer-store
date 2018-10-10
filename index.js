@@ -5,7 +5,7 @@
 const toArray = require('lodash.toarray')
 
 /**
- *
+ * Make inquirer's answers persistence
  * @public
  * @param prompt {Function}
  * @param config - same as inquirer
