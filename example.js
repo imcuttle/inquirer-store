@@ -5,13 +5,29 @@
  *
  */
 const inquirer = require('inquirer')
-const inquirerStore = require('.')
+const { tmpdir } = require('os')
+const nps = require('path')
+const mkdirp = require('mkdirp')
+const autoComplete = require('@moyuyc/inquirer-autocomplete-prompt')
 
-const p = inquirer.prompt([
+inquirer.registerPrompt('autocomplete', autoComplete)
+
+const inquirerStore = require('.')
+const FileStore = require('./FileStore')
+
+const config = [
+  {
+    type: 'autocomplete',
+    name: 'auto',
+    message: 'close what?',
+    suggestOnly: true,
+    source: () => ['me', 'and', 'you'],
+    default: 'and'
+  },
   {
     type: 'input',
     name: 'name',
-    message: "What's your name?",
+    message: "What's your name(deniesStore)?",
     deniesStore: true,
     default: 'yucong'
   },
@@ -29,10 +45,13 @@ const p = inquirer.prompt([
     choices: ['A', 'B', 'C', 'D'],
     default: ['A', 'B']
   }
-])
+]
 
-inquirerStore(p)
+const storePath = nps.join(tmpdir(), 'tmp.json')
+mkdirp.sync(nps.dirname(storePath))
 
-p.then(answers => {
-  console.log(answers)
-}).catch(console.error)
+inquirerStore(inquirer.prompt, config, {
+  store: new FileStore({ storePath })
+})
+  .then(console.log)
+  .catch(console.error)
