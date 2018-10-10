@@ -31,6 +31,8 @@ yarn add inquirer-store
 
 ### inquirerStore
 
+[index.js:32-57](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/index.js#L32-L57 'Source code on GitHub')
+
 #### Parameters
 
 - `prompt` {Function}
@@ -64,6 +66,8 @@ inquirerStore(
 
 ### Store
 
+[Store.js:28-96](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/Store.js#L28-L96 'Source code on GitHub')
+
 #### Parameters
 
 - `options` {object}
@@ -89,17 +93,23 @@ class MyStore extends Store {
 
 #### options
 
+[Store.js:35-35](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/Store.js#L35-L35 'Source code on GitHub')
+
 extends from `this.constructor.defaultOptions` and `options`
 
 Type: [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 #### data
 
+[Store.js:41-41](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/Store.js#L41-L41 'Source code on GitHub')
+
 Existing data in actually
 
 Type: [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 #### get
+
+[Store.js:55-57](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/Store.js#L55-L57 'Source code on GitHub')
 
 Get `this.data[name]`
 
@@ -111,6 +121,8 @@ Returns **any**
 
 #### set
 
+[Store.js:65-67](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/Store.js#L65-L67 'Source code on GitHub')
+
 Set `this.data[name]` to be `value`
 
 ##### Parameters
@@ -120,6 +132,8 @@ Set `this.data[name]` to be `value`
 
 #### unset
 
+[Store.js:74-76](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/Store.js#L74-L76 'Source code on GitHub')
+
 Delete `this.data[name]`
 
 ##### Parameters
@@ -128,9 +142,13 @@ Delete `this.data[name]`
 
 #### clear
 
+[Store.js:82-84](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/Store.js#L82-L84 'Source code on GitHub')
+
 Clear `this.data`
 
 #### write
+
+[Store.js:93-95](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/Store.js#L93-L95 'Source code on GitHub')
 
 Write `this.data` for persistence
 
@@ -139,6 +157,8 @@ Write `this.data` for persistence
 - `data` (optional, default `{}`)
 
 ### FileStore
+
+[FileStore.js:24-50](https://github.com/imcuttle/inquirer-store/blob/275e33921d4874aa55d88b63d063cf05bda745f8/FileStore.js#L24-L50 'Source code on GitHub')
 
 **Extends Store**
 
