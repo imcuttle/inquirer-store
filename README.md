@@ -31,7 +31,7 @@ yarn add inquirer-store
 
 ### inquirerStore
 
-[index.js:32-50](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/index.js#L32-L50 'Source code on GitHub')
+[index.js:37-63](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/index.js#L37-L63 'Source code on GitHub')
 
 Make inquirer's answers persistence
 
@@ -41,8 +41,12 @@ Make inquirer's answers persistence
 - `config` same as inquirer
 - `opts` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**
   - `opts.store` {Store} Use which store
-  - `opts.deniesStoreKey` {string}
-    When config contains `deniesStoreKey` and equals `true`, the prompt's value will not be saved. (optional, default `'deniesStore'`)
+  - `opts.deniesStoreKey` {string} (optional, default `'deniesStore'`)
+  - `opts.mode` {'duplex'|'write'|'read'} <div>The mode about dealing with `store` </div>
+    - `duplex`: Read and then write with `store`
+    - `write`: Just write data to `store`
+    - `read`: Just read data from `store`
+      When config contains `deniesStoreKey` and equals `true`, the prompt's value will not be saved. (optional, default `'duplex'`)
 
 #### Examples
 
@@ -68,7 +72,7 @@ inquirerStore(
 
 ### Store
 
-[Store.js:30-98](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/Store.js#L30-L98 'Source code on GitHub')
+[Store.js:30-98](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/Store.js#L30-L98 'Source code on GitHub')
 
 Base Class for storing to anywhere, don't use it directly
 
@@ -99,7 +103,7 @@ class MyStore extends Store {
 
 #### options
 
-[Store.js:37-37](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/Store.js#L37-L37 'Source code on GitHub')
+[Store.js:37-37](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/Store.js#L37-L37 'Source code on GitHub')
 
 extends from `this.constructor.defaultOptions` and `options`
 
@@ -107,7 +111,7 @@ Type: [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 #### data
 
-[Store.js:43-43](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/Store.js#L43-L43 'Source code on GitHub')
+[Store.js:43-43](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/Store.js#L43-L43 'Source code on GitHub')
 
 Existing data in actually
 
@@ -115,7 +119,7 @@ Type: [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 #### get
 
-[Store.js:57-59](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/Store.js#L57-L59 'Source code on GitHub')
+[Store.js:57-59](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/Store.js#L57-L59 'Source code on GitHub')
 
 Get `this.data[name]`
 
@@ -127,7 +131,7 @@ Returns **any**
 
 #### set
 
-[Store.js:67-69](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/Store.js#L67-L69 'Source code on GitHub')
+[Store.js:67-69](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/Store.js#L67-L69 'Source code on GitHub')
 
 Set `this.data[name]` to be `value`
 
@@ -138,7 +142,7 @@ Set `this.data[name]` to be `value`
 
 #### unset
 
-[Store.js:76-78](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/Store.js#L76-L78 'Source code on GitHub')
+[Store.js:76-78](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/Store.js#L76-L78 'Source code on GitHub')
 
 Delete `this.data[name]`
 
@@ -148,13 +152,13 @@ Delete `this.data[name]`
 
 #### clear
 
-[Store.js:84-86](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/Store.js#L84-L86 'Source code on GitHub')
+[Store.js:84-86](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/Store.js#L84-L86 'Source code on GitHub')
 
 Clear `this.data`
 
 #### write
 
-[Store.js:95-97](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/Store.js#L95-L97 'Source code on GitHub')
+[Store.js:95-97](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/Store.js#L95-L97 'Source code on GitHub')
 
 Write `this.data` for persistence
 
@@ -164,7 +168,7 @@ Write `this.data` for persistence
 
 ### FileStore
 
-[FileStore.js:24-50](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/FileStore.js#L24-L50 'Source code on GitHub')
+[FileStore.js:24-50](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/FileStore.js#L24-L50 'Source code on GitHub')
 
 **Extends Store**
 
@@ -182,7 +186,7 @@ Store's implementation in file system
 
 ### fillConfigDefault
 
-[index.js:67-77](https://github.com/imcuttle/inquirer-store/blob/f025a72a0ad8c6c0412e11ec8349488671fcebbc/index.js#L67-L77 'Source code on GitHub')
+[index.js:80-90](https://github.com/imcuttle/inquirer-store/blob/118d047b107b73f302845a0a1ce5b8976c67fb3b/index.js#L80-L90 'Source code on GitHub')
 
 Fill config's `default` field
 

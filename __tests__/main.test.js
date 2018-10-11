@@ -89,6 +89,83 @@ describe('inquirerStore', function() {
     })
   })
 
+  it('should inquirerStore with `mode = write`', async function() {
+    let p = inquirerStore(inquirer.prompt, prompts, {
+      store: new FileStore({ storePath: tmpPath })
+    })
+
+    type('abcdd')
+    await enter()
+
+    down()
+    await enter()
+
+    return p.then(async answer => {
+      expect(answer).toEqual({
+        name: 'abcdd',
+        gender: 'Woman'
+      })
+      expect(readTmpData()).toEqual(answer)
+
+      // Verify setting should not be worked
+      p = inquirerStore(inquirer.prompt, prompts, {
+        mode: 'write',
+        store: new FileStore({ storePath: tmpPath })
+      })
+      await enter()
+      await enter()
+      return p.then(answer => {
+        expect(answer).toEqual({
+          name: 'abc',
+          gender: 'Man'
+        })
+        expect(readTmpData()).toEqual({
+          name: 'abc',
+          gender: 'Man'
+        })
+      })
+    })
+  })
+
+  it('should inquirerStore with `mode = read`', async function() {
+    let p = inquirerStore(inquirer.prompt, prompts, {
+      store: new FileStore({ storePath: tmpPath })
+    })
+
+    type('abcdd')
+    await enter()
+
+    down()
+    await enter()
+
+    return p.then(async answer => {
+      expect(answer).toEqual({
+        name: 'abcdd',
+        gender: 'Woman'
+      })
+      expect(readTmpData()).toEqual(answer)
+
+      // Verify setting should not be worked
+      p = inquirerStore(inquirer.prompt, prompts, {
+        mode: 'read',
+        store: new FileStore({ storePath: tmpPath })
+      })
+      type('foo')
+      await enter()
+      await enter()
+      return p.then(answer => {
+        expect(answer).toEqual({
+          name: 'foo',
+          gender: 'Woman'
+        })
+        expect(readTmpData()).toEqual({
+          name: 'abcdd',
+          gender: 'Woman'
+        })
+      })
+    })
+  })
+
   it('should inquirerStore when contains key', async function() {
     let p = inquirerStore(
       inquirer.prompt,

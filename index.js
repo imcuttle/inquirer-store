@@ -12,6 +12,11 @@ const toArray = require('lodash.toarray')
  * @param opts
  * @param opts.store {Store} Use which store
  * @param [opts.deniesStoreKey='deniesStore'] {string}
+ * @param [opts.mode='duplex'] {'duplex'|'write'|'read'}
+ *  <div>The mode about dealing with `store` </div>
+ *  - `duplex`: Read and then write with `store`
+ *  - `write`: Just write data to `store`
+ *  - `read`: Just read data from `store`
  *  When config contains `deniesStoreKey` and equals `true`, the prompt's value will not be saved.
  * @example
  * const inquirerStore = require('inquirer-store')
@@ -29,22 +34,29 @@ const toArray = require('lodash.toarray')
  * })
  *
  */
-function inquirerStore(prompt, config, { store, deniesStoreKey = 'deniesStore' } = {}) {
-  config = fillConfigDefault(config, store)
+function inquirerStore(prompt, config, { store, deniesStoreKey = 'deniesStore', mode = 'duplex' } = {}) {
+  const writeAble = ['write', 'duplex'].includes(mode)
+  const readAble = ['read', 'duplex'].includes(mode)
+
+  config = toArray(config)
+  if (readAble) config = fillConfigDefault(config, store)
 
   const p = prompt(config)
-  const ob = p.ui.process.subscribe(onEachAnswer, null, onComplete)
 
-  function onEachAnswer({ name, answer } = {}) {
-    if (p.ui.activePrompt && p.ui.activePrompt.opt[deniesStoreKey]) {
-      store.unset(name)
-    } else {
-      store.set(name, answer)
-      store.write()
+  if (writeAble) {
+    const ob = p.ui.process.subscribe(onEachAnswer, null, onComplete)
+
+    function onEachAnswer({ name, answer } = {}) {
+      if (p.ui.activePrompt && p.ui.activePrompt.opt[deniesStoreKey]) {
+        store.unset(name)
+      } else {
+        store.set(name, answer)
+        store.write()
+      }
     }
-  }
 
-  function onComplete() {}
+    function onComplete() {}
+  }
 
   return p
 }
