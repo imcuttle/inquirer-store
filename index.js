@@ -30,14 +30,7 @@ const toArray = require('lodash.toarray')
  *
  */
 function inquirerStore(prompt, config, { store, deniesStoreKey = 'deniesStore' } = {}) {
-  config = toArray(config)
-
-  config = config.map(conf => {
-    if (conf && conf.name && store.get(conf.name)) {
-      return Object.assign({}, conf, { default: store.get(conf.name) })
-    }
-    return conf
-  })
+  config = fillConfigDefault(config, store)
 
   const p = prompt(config)
   const ob = p.ui.process.subscribe(onEachAnswer, null, onComplete)
@@ -56,4 +49,32 @@ function inquirerStore(prompt, config, { store, deniesStoreKey = 'deniesStore' }
   return p
 }
 
+/**
+ * Fill config's `default` field
+ * @public
+ * @param config {Array<object> | object}
+ * @param store {Store}
+ * @return {Array<object>}
+ * @example
+ * const { fillConfigDefault } = require('inquirer-store')
+ *
+ * fillConfigDefault(
+ *   [{ type: 'input', name: 'name', default: 'foo' }],
+ *   new FileStore({ storePath: '/path/to/where.json' })
+ * )
+ * // [{ type: 'input', name: 'name', default: 'the value that you has inputted in last time' }]
+ */
+function fillConfigDefault(config, store) {
+  config = toArray(config)
+  config = config.map(conf => {
+    if (conf && conf.name && store.get(conf.name)) {
+      return Object.assign({}, conf, { default: store.get(conf.name) })
+    }
+    return conf
+  })
+
+  return config
+}
+
 module.exports = inquirerStore
+module.exports.fillConfigDefault = fillConfigDefault
