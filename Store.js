@@ -6,10 +6,11 @@
  */
 
 /**
- * @public
  * Base Class for storing to anywhere, don't use it directly
+ * @public
  * @param options {object}
  * @example
+ * // Write customized store class
  * class MyStore extends Store {
  *    static defaultOptions = {
  *      data: { name: 'imcuttle' }
