@@ -1,3 +1,11 @@
+<a name="1.1.0"></a>
+
+# [1.1.0](https://github.com/imcuttle/inquirer-store/compare/v1.0.4...v1.1.0) (2018-10-11)
+
+### Features
+
+- supporting mode ([5dd8ec8](https://github.com/imcuttle/inquirer-store/commit/5dd8ec8))
+
 <a name="1.0.4"></a>
 
 ## [1.0.4](https://github.com/imcuttle/inquirer-store/compare/v1.0.3...v1.0.4) (2018-10-11)
