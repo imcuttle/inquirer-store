@@ -36,7 +36,7 @@ function inquirerStore(prompt, config, { store, deniesStoreKey = 'deniesStore' }
   const ob = p.ui.process.subscribe(onEachAnswer, null, onComplete)
 
   function onEachAnswer({ name, answer } = {}) {
-    if (p.ui.activePrompt.opt[deniesStoreKey]) {
+    if (p.ui.activePrompt && p.ui.activePrompt.opt[deniesStoreKey]) {
       store.unset(name)
     } else {
       store.set(name, answer)
