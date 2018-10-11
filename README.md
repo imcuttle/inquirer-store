@@ -31,7 +31,7 @@ yarn add inquirer-store
 
 ### inquirerStore
 
-[index.js:32-57](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/index.js#L32-L57 'Source code on GitHub')
+[index.js:32-50](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/index.js#L32-L50 'Source code on GitHub')
 
 Make inquirer's answers persistence
 
@@ -68,7 +68,7 @@ inquirerStore(
 
 ### Store
 
-[Store.js:30-98](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/Store.js#L30-L98 'Source code on GitHub')
+[Store.js:30-98](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/Store.js#L30-L98 'Source code on GitHub')
 
 Base Class for storing to anywhere, don't use it directly
 
@@ -99,7 +99,7 @@ class MyStore extends Store {
 
 #### options
 
-[Store.js:37-37](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/Store.js#L37-L37 'Source code on GitHub')
+[Store.js:37-37](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/Store.js#L37-L37 'Source code on GitHub')
 
 extends from `this.constructor.defaultOptions` and `options`
 
@@ -107,7 +107,7 @@ Type: [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 #### data
 
-[Store.js:43-43](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/Store.js#L43-L43 'Source code on GitHub')
+[Store.js:43-43](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/Store.js#L43-L43 'Source code on GitHub')
 
 Existing data in actually
 
@@ -115,7 +115,7 @@ Type: [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 #### get
 
-[Store.js:57-59](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/Store.js#L57-L59 'Source code on GitHub')
+[Store.js:57-59](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/Store.js#L57-L59 'Source code on GitHub')
 
 Get `this.data[name]`
 
@@ -127,7 +127,7 @@ Returns **any**
 
 #### set
 
-[Store.js:67-69](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/Store.js#L67-L69 'Source code on GitHub')
+[Store.js:67-69](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/Store.js#L67-L69 'Source code on GitHub')
 
 Set `this.data[name]` to be `value`
 
@@ -138,7 +138,7 @@ Set `this.data[name]` to be `value`
 
 #### unset
 
-[Store.js:76-78](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/Store.js#L76-L78 'Source code on GitHub')
+[Store.js:76-78](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/Store.js#L76-L78 'Source code on GitHub')
 
 Delete `this.data[name]`
 
@@ -148,13 +148,13 @@ Delete `this.data[name]`
 
 #### clear
 
-[Store.js:84-86](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/Store.js#L84-L86 'Source code on GitHub')
+[Store.js:84-86](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/Store.js#L84-L86 'Source code on GitHub')
 
 Clear `this.data`
 
 #### write
 
-[Store.js:95-97](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/Store.js#L95-L97 'Source code on GitHub')
+[Store.js:95-97](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/Store.js#L95-L97 'Source code on GitHub')
 
 Write `this.data` for persistence
 
@@ -164,7 +164,7 @@ Write `this.data` for persistence
 
 ### FileStore
 
-[FileStore.js:24-50](https://github.com/imcuttle/inquirer-store/blob/48410eee470e82106b167f79702af3941fc38b43/FileStore.js#L24-L50 'Source code on GitHub')
+[FileStore.js:24-50](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/FileStore.js#L24-L50 'Source code on GitHub')
 
 **Extends Store**
 
@@ -179,6 +179,31 @@ Store's implementation in file system
   - `options.parse` {string: string => object} Parse the text from file `storePath` (optional, default `JSON.parse`)
   - `options.stringify` {data: object => string} Stringify data for saving in `storePath` (optional, default `JSON.stringify`)
   - `options.fs` It's useful for mocking data by overriding `existsSync / readFileSync / writeFileSync` methods (optional, default `require('fs')`)
+
+### fillConfigDefault
+
+[index.js:67-77](https://github.com/imcuttle/inquirer-store/blob/d4cb5efa6993a83b40ca842a2b38beb528f984fe/index.js#L67-L77 'Source code on GitHub')
+
+Fill config's `default` field
+
+#### Parameters
+
+- `config` {Array<object> | object}
+- `store` {Store}
+
+#### Examples
+
+```javascript
+const { fillConfigDefault } = require('inquirer-store')
+
+fillConfigDefault(
+  [{ type: 'input', name: 'name', default: 'foo' }],
+  new FileStore({ storePath: '/path/to/where.json' })
+)
+// [{ type: 'input', name: 'name', default: 'the value that you has inputted in last time' }]
+```
+
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>**
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 {
   "name": "inquirer-store",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "description": "Make inquirer's answers persistence even be aborted halfway",
   "author": "imcuttle <moyuyc95@gmail.com>",
