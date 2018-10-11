@@ -14,12 +14,12 @@
  *    static defaultOptions = {
  *      data: { name: 'imcuttle' }
  *    }
- *
+ *    // Note: It must be a sync operation
  *    _read() {
  *      const { data } = this.options
  *      return data
  *    }
- *
+ *    // Note: It must be a sync operation
  *    _write(data) {
  *      // Save data for persistence here
  *    }
