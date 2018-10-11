@@ -1,3 +1,11 @@
+<a name="1.0.4"></a>
+
+## [1.0.4](https://github.com/imcuttle/inquirer-store/compare/v1.0.3...v1.0.4) (2018-10-11)
+
+### Bug Fixes
+
+- ensure ui.activePrompt existing ([f025a72](https://github.com/imcuttle/inquirer-store/commit/f025a72))
+
 <a name="1.0.3"></a>
 
 ## [1.0.3](https://github.com/imcuttle/inquirer-store/compare/v1.0.2...v1.0.3) (2018-10-11)
