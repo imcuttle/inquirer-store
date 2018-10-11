@@ -10,6 +10,7 @@
  * @public
  * @param options {object}
  * @example
+ * const Store = require('inquirer-store/Store')
  * // Write customized store class
  * class MyStore extends Store {
  *    static defaultOptions = {
