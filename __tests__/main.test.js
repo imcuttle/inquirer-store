@@ -227,8 +227,8 @@ describe('inquirerStore', function() {
     })
   })
 
-  it('should inquirerStore using `@moyuyc/inquirer-autocomplete-prompt`', async function() {
-    let p = inquirerStore(
+  it('should inquirerStore using `@moyuyc/inquirer-autocomplete-prompt`', async function(done) {
+    let p = await inquirerStore(
       inquirer.prompt,
       [
         {
@@ -245,9 +245,7 @@ describe('inquirerStore', function() {
       }
     )
 
-    // type('abcdd')
     await enter()
-
     return p.then(async answer => {
       expect(answer).toEqual({
         name: 'auto'
@@ -275,6 +273,8 @@ describe('inquirerStore', function() {
           name: 'auto'
         })
         expect(readTmpData()).toEqual({ tttt: answer })
+
+        done()
       })
     })
   })

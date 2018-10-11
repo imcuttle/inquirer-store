@@ -30,30 +30,50 @@ const toArray = require('lodash.toarray')
  *
  */
 function inquirerStore(prompt, config, { store, deniesStoreKey = 'deniesStore' } = {}) {
-  config = toArray(config)
+  return store.read().then(() => {
+    config = toArray(config)
 
-  config = config.map(conf => {
-    if (conf && conf.name && store.get(conf.name)) {
-      return Object.assign({}, conf, { default: store.get(conf.name) })
+    config = config.map(conf => {
+      if (conf && conf.name && store.get(conf.name)) {
+        return Object.assign({}, conf, { default: store.get(conf.name) })
+      }
+      return conf
+    })
+
+    const p = prompt(config)
+    const ob = p.ui.process.subscribe(onEachAnswer, null, onComplete)
+
+    function onEachAnswer({ name, answer } = {}) {
+      if (p.ui.activePrompt.opt[deniesStoreKey]) {
+        store.unset(name)
+      } else {
+        store.set(name, answer)
+        // store.write()
+      }
     }
-    return conf
-  })
 
-  const p = prompt(config)
-  const ob = p.ui.process.subscribe(onEachAnswer, null, onComplete)
-
-  function onEachAnswer({ name, answer } = {}) {
-    if (p.ui.activePrompt.opt[deniesStoreKey]) {
-      store.unset(name)
-    } else {
-      store.set(name, answer)
+    function onComplete() {
       store.write()
+      process.removeListener('SIGINT', onForceClose)
+      process.removeListener('exit', onForceClose)
     }
-  }
 
-  function onComplete() {}
+    function onForceClose() {
+      console.log('onForceClose bef')
 
-  return p
+      return Promise.resolve(store.write()).then(() => {
+        console.log('onForceClose')
+        process.exit(0)
+      })
+    }
+
+    // Make sure new prompt start on a newline when closing
+    process.on('SIGINT', onForceClose)
+    process.on('exit', onForceClose)
+    // p.ui.rl.on('SIGINT', onForceClose)
+
+    return p
+  })
 }
 
 module.exports = inquirerStore

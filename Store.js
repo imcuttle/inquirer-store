@@ -33,12 +33,22 @@ class Store {
      * @type {object}
      */
     this.options = Object.assign({}, this.constructor.defaultOptions, options)
-    /**
-     * Existing data in actually
-     * @public
-     * @type {object}
-     */
-    this.data = this._read()
+  }
+
+  /**
+   * Read for filling `this.data`
+   * @public
+   * @return {Promise<any>}
+   */
+  read() {
+    return Promise.resolve(this._read()).then(data => {
+      /**
+       * Existing data in actually
+       * @public
+       * @type {object}
+       */
+      this.data = data
+    })
   }
 
   /* istanbul ignore next */
@@ -83,15 +93,17 @@ class Store {
     this.data = {}
   }
 
-  _write() {}
+  _write(data) {}
 
   /**
    * Write `this.data` for persistence
    * @public
    * @param [data {object}={}]
+   * @return {Promise<any>|any}
    */
   write(data = {}) {
-    this._write(Object.assign({}, this.data, data))
+    const newData = Object.assign({}, this.data, data)
+    return this._write(newData)
   }
 }
 

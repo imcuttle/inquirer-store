@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "lodash.toarray": "^4.4.0",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "pify": "^4.0.0"
   }
 }

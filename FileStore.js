@@ -5,7 +5,7 @@
  *
  */
 const fileSys = require('fs')
-const nps = require('path')
+const pify = require('pify')
 
 const Store = require('./Store')
 
@@ -26,12 +26,14 @@ class FileStore extends Store {
     const { storePath, parse, key, fs } = this.options
 
     if (fs.existsSync(storePath)) {
-      const obj = parse(fs.readFileSync(storePath).toString())
-      this._store = obj
-      if (key) {
-        return obj[key] || {}
-      }
-      return obj
+      return pify(fs.readFile)(storePath).then(string => {
+        const obj = parse(string.toString())
+        this._store = obj
+        if (key) {
+          return obj[key] || {}
+        }
+        return obj
+      })
     }
 
     return {}
@@ -45,7 +47,7 @@ class FileStore extends Store {
       this._store = answers
     }
 
-    fs.writeFileSync(storePath, stringify(this._store))
+    return pify(fs.writeFile)(storePath, stringify(this._store))
   }
 }
 

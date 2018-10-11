@@ -6,6 +6,7 @@
  */
 const inquirer = require('inquirer')
 const { tmpdir } = require('os')
+const { readFileSync, existsSync } = require('fs')
 const nps = require('path')
 const mkdirp = require('mkdirp')
 const autoComplete = require('@moyuyc/inquirer-autocomplete-prompt')
@@ -48,6 +49,7 @@ const config = [
 ]
 
 const storePath = nps.join(tmpdir(), 'tmp.json')
+existsSync(storePath) && console.log(storePath, readFileSync(storePath).toString())
 mkdirp.sync(nps.dirname(storePath))
 
 inquirerStore(inquirer.prompt, config, {
