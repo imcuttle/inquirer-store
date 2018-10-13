@@ -32,6 +32,8 @@ class FileStore extends Store {
         return obj[key] || {}
       }
       return obj
+    } else {
+      this._store = {}
     }
 
     return {}
