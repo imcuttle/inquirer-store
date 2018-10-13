@@ -31,7 +31,7 @@ yarn add inquirer-store
 
 ### inquirerStore
 
-[index.js:37-62](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/index.js#L37-L62 'Source code on GitHub')
+[index.js:37-62](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/index.js#L37-L62 'Source code on GitHub')
 
 Make inquirer's answers persistence
 
@@ -72,7 +72,7 @@ inquirerStore(
 
 ### Store
 
-[Store.js:30-98](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/Store.js#L30-L98 'Source code on GitHub')
+[Store.js:30-98](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/Store.js#L30-L98 'Source code on GitHub')
 
 Base Class for storing to anywhere, don't use it directly
 
@@ -103,7 +103,7 @@ class MyStore extends Store {
 
 #### options
 
-[Store.js:37-37](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/Store.js#L37-L37 'Source code on GitHub')
+[Store.js:37-37](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/Store.js#L37-L37 'Source code on GitHub')
 
 extends from `this.constructor.defaultOptions` and `options`
 
@@ -111,7 +111,7 @@ Type: [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 #### data
 
-[Store.js:43-43](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/Store.js#L43-L43 'Source code on GitHub')
+[Store.js:43-43](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/Store.js#L43-L43 'Source code on GitHub')
 
 Existing data in actually
 
@@ -119,7 +119,7 @@ Type: [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 #### get
 
-[Store.js:57-59](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/Store.js#L57-L59 'Source code on GitHub')
+[Store.js:57-59](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/Store.js#L57-L59 'Source code on GitHub')
 
 Get `this.data[name]`
 
@@ -131,7 +131,7 @@ Returns **any**
 
 #### set
 
-[Store.js:67-69](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/Store.js#L67-L69 'Source code on GitHub')
+[Store.js:67-69](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/Store.js#L67-L69 'Source code on GitHub')
 
 Set `this.data[name]` to be `value`
 
@@ -142,7 +142,7 @@ Set `this.data[name]` to be `value`
 
 #### unset
 
-[Store.js:76-78](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/Store.js#L76-L78 'Source code on GitHub')
+[Store.js:76-78](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/Store.js#L76-L78 'Source code on GitHub')
 
 Delete `this.data[name]`
 
@@ -152,13 +152,13 @@ Delete `this.data[name]`
 
 #### clear
 
-[Store.js:84-86](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/Store.js#L84-L86 'Source code on GitHub')
+[Store.js:84-86](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/Store.js#L84-L86 'Source code on GitHub')
 
 Clear `this.data`
 
 #### write
 
-[Store.js:95-97](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/Store.js#L95-L97 'Source code on GitHub')
+[Store.js:95-97](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/Store.js#L95-L97 'Source code on GitHub')
 
 Write `this.data` for persistence
 
@@ -168,7 +168,7 @@ Write `this.data` for persistence
 
 ### FileStore
 
-[FileStore.js:24-50](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/FileStore.js#L24-L50 'Source code on GitHub')
+[FileStore.js:24-52](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/FileStore.js#L24-L52 'Source code on GitHub')
 
 **Extends Store**
 
@@ -186,7 +186,7 @@ Store's implementation in file system
 
 ### fillConfigDefault
 
-[index.js:79-89](https://github.com/imcuttle/inquirer-store/blob/5dd8ec873e368f5fa23f0fef306dc2613a850e91/index.js#L79-L89 'Source code on GitHub')
+[index.js:79-89](https://github.com/imcuttle/inquirer-store/blob/e43350ae2f4cba58a593eb9054d3e715c0690316/index.js#L79-L89 'Source code on GitHub')
 
 Fill config's `default` field
 

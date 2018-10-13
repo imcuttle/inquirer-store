@@ -1,3 +1,11 @@
+<a name="1.1.1"></a>
+
+## [1.1.1](https://github.com/imcuttle/inquirer-store/compare/v1.1.0...v1.1.1) (2018-10-13)
+
+### Bug Fixes
+
+- this.\_store is undefined ([e43350a](https://github.com/imcuttle/inquirer-store/commit/e43350a))
+
 <a name="1.1.0"></a>
 
 # [1.1.0](https://github.com/imcuttle/inquirer-store/compare/v1.0.4...v1.1.0) (2018-10-11)
