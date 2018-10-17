@@ -12,12 +12,12 @@ const toArray = require('lodash.toarray')
  * @param opts
  * @param opts.store {Store} Use which store
  * @param [opts.deniesStoreKey='deniesStore'] {string}
+ *  When config contains `deniesStoreKey` and equals `true`, the prompt's value will not be saved.
  * @param [opts.mode='duplex'] {'duplex'|'write'|'read'}
  *  <div>The mode about dealing with `store` </div>
  *  - `duplex`: Read and then write with `store`
  *  - `write`: Just write data to `store`
  *  - `read`: Just read data from `store`
- *  When config contains `deniesStoreKey` and equals `true`, the prompt's value will not be saved.
  * @example
  * const inquirerStore = require('inquirer-store')
  * const FileStore = require('inquirer-store/FileStore')
